@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("../../assets/img/background.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+}
+
+.title-connexion {
+    color: white!important;
+}
+
+.bloc {
+    min-width: 350px!important;
+    margin: auto!important;
+}
+
+.card-head {
+    background-color: #d60721!important;
+    color: #393939;
+}
+.label-email, .label-password {
+    visibility: hidden;
+}
+
+.card-foot {
+    height: .75rem!important;
+    line-height: .75rem!important;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+}
+
+.submit {
+    background-color: #393939!important;
+    color: white!important;
+    font-weight: bold!important;
+}
+
+.email, .password {
+    border: none!important;
+    border-bottom: 1px solid silver!important;
+    border-radius: 0!important;
+    margin-left: 20px!important;
+}
+
+.main-content {
+    height: max-content!important;
+}
+
+.main {
+    margin: auto!important;
+}
+
+.password-forget {
+    color: #393939!important
+}
+

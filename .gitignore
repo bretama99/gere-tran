@@ -1,0 +1,7 @@
+node_modules
+dist-bkp
+node_modules.zip
+dist.zip
+dist
+bostonlab_v*.zip
+.idea/
