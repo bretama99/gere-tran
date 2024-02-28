@@ -1,96 +1,142 @@
 <template>
   <div id="main-div" class="vx-row">
     <div class="vx-col w-full mb-base">
-      <vx-card id="card-id" :title="$t('editContact')">
+      <vx-card id="card-id" :title="$t('addBank')">
         <vx-card id="internal-card" class="mt-5" title no-shadow card-border>
           <loading :active.sync="isLoading" :can-cancel="true"></loading>
-          <div class="vx-row mt-2">
-                          <div  class="vx-col w-12 mt-6">
-                            <img height="20px" width="25px" src="@/optifood/assets/img/user-login.png" alt="">
-                          </div>
-                          <div
-                            class="vx-col sm:w-full md:w-full l:w-2/5 xl:w-2/5"
-                          >
-                            <vs-input
-                              :label="$t('name')"
-                              v-model="name"
-                              class="w-full"
-                              name="name"
-                              v-validate="'required'"
-                              data-vv-validate-on="blur"
-                            />
-                            <span class="text-danger">{{
-                              errors.first("step-2.name")
-                            }}</span>
-                          </div>
-                          <div  class="vx-col w-12 mt-6">
-                            <img height="20px" width="25px" src="@/optifood/assets/img/user-login.png" alt="">
-                          </div>
-                          <div
-                          class="vx-col sm:w-full md:w-full l:w-2/5 xl:w-2/5"
-                          >
-                            <vs-input
-                              :label="$t('firstName')"
-                              v-model="firstName"
-                              class="w-full"
-                              name="firstName"
-                              v-validate="'required'"
-                              data-vv-validate-on="blur"
-                            />
-                            <span class="text-danger">{{
-                              errors.first("step-2.firstName")
-                            }}</span>
-                        </div>
-                        </div>
-                        <div class="vx-row mt-2">
-                          <div  class="vx-col w-12 mt-8">
-                            <img height="20px" width="25px" src="@/optifood/assets/img/email.png" alt="">
-                          </div>
-                          <div
-                          class="vx-col sm:w-full md:w-full l:w-2/5 xl:w-2/5"
-                          >
-                            <vs-input
-                              :label="$t('email')"
-                              v-model="email"
-                              class="w-full"
-                              name="email"
-                              v-validate="'required'"
-                              data-vv-validate-on="blur"
-                            />
-                            <span class="text-danger">{{
-                              errors.first("step-2.email")
-                            }}</span>
-                          </div>
+          <form data-vv-scope="step-2">
+            <div class="vx-row mt-2">
+              <div class="vx-col sm:w-full md:w-full lg:w-full xl:w-full">
+                <div class="vx-row mt-2">
+                  <div class="vx-col mb-6 sm:w-full md:w-full l:w-1/4 xl:w-1/4">
+                    <vs-input
+                      :label="$t('name')"
+                      v-model="record.name"
+                      class="w-full"
+                      name="name"
+                      v-validate="'required'"
+                      data-vv-validate-on="blur"
+                    />
+                    <span class="text-danger">{{ errors.first("name") }}</span>
+                  </div>
 
-                           <div class="vx-col w-12 mt-8">
-                              <img height="20px" width="25px" src="@/optifood/assets/img/phone-call.png" alt="">
-                          </div>
-                          <div
-                          class="vx-col sm:w-full md:w-full l:w-2/5 xl:w-2/5"
-                          >
-                            <vs-input
-                              :label="$t('phoneNumber')"
-                              v-model="phoneNumber"
-                              class="w-full"
-                              name="phoneNumber"
-                              v-validate="'required'"
-                              data-vv-validate-on="blur"
-                            />
-                            <span class="text-danger">{{
-                              errors.first("step-2.phoneNumber")
-                            }}</span>
-                          </div>
-                        </div>
-            <div class="vx-row ml-8 mt-8">
-              <vs-button v-if="isGranted('editRole')" @click="editContact" color="#292929" class="mr-3 mb-2">{{$t('update')}}</vs-button>
+                  <div class="vx-col sm:w-full md:w-full l:w-1/4 xl:w-1/4">
+                    <vs-input
+                      :label="$t('localName')"
+                      v-model="record.localName"
+                      class="w-full"
+                      name="localName"
+                      v-validate="'required'"
+                      data-vv-validate-on="blur"
+                    />
+                    <span class="text-danger">{{
+                      errors.first("localName")
+                    }}</span>
+                  </div>
+
+                  <div class="vx-col sm:w-full md:w-full l:w-1/4 xl:w-1/4">
+                    <vs-input
+                      :label="$t('branch')"
+                      v-model="record.branch"
+                      class="w-full"
+                      name="branch"
+                      v-validate="'required'"
+                      data-vv-validate-on="blur"
+                    />
+                    <span class="text-danger">{{
+                      errors.first("branch")
+                    }}</span>
+                  </div>
+
+                  <div class="vx-col sm:w-full md:w-full l:w-1/4 xl:w-1/4">
+                    <vs-input
+                      :label="$t('blockAccount')"
+                      v-model="record.blockAccount"
+                      class="w-full"
+                      name="blockAccount"
+                      v-validate="'required'"
+                      data-vv-validate-on="blur"
+                    />
+                    <span class="text-danger">{{
+                      errors.first("blockAccount")
+                    }}</span>
+                  </div>
+
+                  <div class="vx-col sm:w-full md:w-full l:w-1/4 xl:w-1/4">
+                    <vs-input
+                      :label="$t('serviceAccount')"
+                      v-model="record.serviceAccount"
+                      class="w-full"
+                      name="serviceAccount"
+                      v-validate="'required'"
+                      data-vv-validate-on="blur"
+                    />
+                    <span class="text-danger">{{
+                      errors.first("serviceAccount")
+                    }}</span>
+                  </div>
+
+                  <div class="vx-col sm:w-full md:w-full l:w-1/4 xl:w-1/4">
+                    <vs-input
+                      :label="$t('swiftCode')"
+                      v-model="record.swiftCode"
+                      class="w-full"
+                      name="swiftCode"
+                      v-validate="'required'"
+                      data-vv-validate-on="blur"
+                    />
+                    <span class="text-danger">{{
+                      errors.first("swiftCode")
+                    }}</span>
+                  </div>
+
+                  <div class="vx-col sm:w-full md:w-full l:w-1/4 xl:w-1/4">
+                    <vs-input
+                      :label="$t('swiftBlockAccount')"
+                      v-model="record.swiftBlockAccount"
+                      class="w-full"
+                      name="swiftBlockAccount"
+                      v-validate="'required'"
+                      data-vv-validate-on="blur"
+                    />
+                    <span class="text-danger">{{
+                      errors.first("swiftBlockAccount")
+                    }}</span>
+                  </div>
+
+                  <div class="vx-col sm:w-full md:w-full l:w-1/4 xl:w-1/4">
+                    <vs-input
+                      :label="$t('swiftServiceAccount')"
+                      v-model="record.swiftServiceAccount"
+                      class="w-full"
+                      name="swiftServiceAccount"
+                      v-validate="'required'"
+                      data-vv-validate-on="blur"
+                    />
+                    <span class="text-danger">{{
+                      errors.first("swiftServiceAccount")
+                    }}</span>
+                  </div>
+                </div>
+              </div>
             </div>
-
+          </form>
+          <div class="vx-row mt-4 ml-4">
+            <div class="vx-col w-full">
+              <vs-button
+                v-if="isGranted('addRole')"
+                @click="editBank"
+                color="#292929"
+                class="mr-3 mb-2"
+                >{{ $t("save") }}</vs-button
+              >
+            </div>
+          </div>
         </vx-card>
       </vx-card>
     </div>
   </div>
 </template>
-
 
 <script>
 import router from "@/router.js";
@@ -99,13 +145,13 @@ const dict = {
   custom: {
     roleName: {
       required: "Please enter role name",
-      alpha: "Role name must be character"
+      alpha: "Role name must be character",
     },
     roleFullName: {
       required: "Please enter role full name",
-      alpha: "Role full name must be character"
-    }
-  }
+      alpha: "Role full name must be character",
+    },
+  },
 };
 Validator.localize("en", dict);
 import VSelect from "vue-select";
@@ -113,89 +159,101 @@ import Loading from "vue-loading-overlay";
 export default {
   components: {
     "v-select": VSelect,
-    Loading
+    Loading,
   },
   data() {
     return {
-      name: "",
-      firstName: "",
-      email: "",
-      phoneNumber: "",
+      record: {
+        name: "",
+        localName: "",
+        blockAccount: "",
+        serviceAccount: "",
+        swiftBlockAccount: "",
+        swiftCode: "",
+        swiftServiceAccount: "",
+        branch: "",
+      },
       isLoading: false,
-      contactId: this.$route.params.id,
+      id: this.$route.params.id,
     };
   },
   methods: {
-  editContact() {
-    this.$validator.validateAll().then(result => {
-       if (result) {
-         this.isLoading=true
-           this.$http
-             .put("/api/contact/"+this.contactId, 
-             {
-              name: this.name,
-              firstName: this.firstName,
-              email: this.email,
-              phoneNumber: this.phoneNumber
-             })
-             .then(response => {
-               this.isLoading=false
-               this.$vs.notify({
-                 title:this.$t('Update'),
-                 text: this.$t('Update Successfully!'),
-                 iconPack: "feather",
-                 icon: "icon-alert-circle",
-                 color: "success",
-                 time:6000
-               });
-               this.$router.push({ path: "/pages/view-contact" });
-             }).catch(error=>{
-               this.isLoading=false
-               this.$vs.notify({
-                 title:this.$t('Update'),
-                 text: this.$t('notRegistered'),
-                 iconPack: "feather",
-                 icon: "icon-alert-circle",
-                 color: "warnning",
-                 time:6000
-               });
-             })            
-       }
-     });
-      },
+    editBank() {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          this.isLoading = true;
+          this.$http
+            .put("/api/banks/" + this.id, {
+              name: this.record.name,
+              name_tg: this.record.localName,
+              branch: this.record.branch,
+              block_account: this.record.blockAccount,
+              service_account: this.record.serviceAccount,
+              swift_code: this.record.swiftCode,
+              swift_block_account: this.record.swiftBlockAccount,
+              swift_service_account: this.record.swiftServiceAccount,
+            })
+            .then((response) => {
+              this.isLoading = false;
+              this.$vs.notify({
+                title: this.$t("Update"),
+                text: this.$t("Update Successfully!"),
+                iconPack: "feather",
+                icon: "icon-alert-circle",
+                color: "success",
+                time: 6000,
+              });
+              this.$router.push({ path: "/pages/view-banks" });
+            })
+            .catch((error) => {
+              this.isLoading = false;
+              this.$vs.notify({
+                title: this.$t("Update"),
+                text: this.$t("notRegistered"),
+                iconPack: "feather",
+                icon: "icon-alert-circle",
+                color: "warnning",
+                time: 6000,
+              });
+            });
+        }
+      });
+    },
 
-
-    fetchContact(){
+    fetchBank() {
       const thisIns = this;
-      this.isLoading=true
+      this.isLoading = true;
       this.$http
-        .get("/api/contact/"+this.contactId)
-        .then(function(response) {
-          thisIns.isLoading=false
-          thisIns.name = response.data.name;
-          thisIns.firstName = response.data.firstName;
-          thisIns.email = response.data.email;
-          thisIns.phoneNumber = response.data.phoneNumber;
-        }).catch(error => {
-            thisIns.isLoading=false
-        });
-    }
+        .get("/api/banks/" + this.id)
+        .then(function (response) {
+          thisIns.isLoading = false;
 
+          thisIns.record.name = response.data.data.name;
+          thisIns.record.localName = response.data.data.name_tg;
+          thisIns.record.branch = response.data.data.branch;
+          thisIns.record.blockAccount = response.data.data.block_account;
+          thisIns.record.serviceAccount = response.data.data.service_account;
+          thisIns.record.swiftCode = response.data.data.swift_code;
+          thisIns.record.swiftBlockAccount =
+            response.data.data.swift_block_account;
+          thisIns.record.swiftServiceAccount =
+            response.data.data.swift_service_account;
+        })
+        .catch((error) => {
+          thisIns.isLoading = false;
+        });
+    },
   },
 
-computed: {
-   getRole(){
-     return this.$store.getters["RoleModule/getRole"];
-   }
- },
+  computed: {
+    getRole() {
+      return this.$store.getters["RoleModule/getRole"];
+    },
+  },
 
-created(){
-    this.fetchContact()
-  }
-
-
+  created() {
+    this.fetchBank();
+  },
 };
 </script>
-<style  lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
